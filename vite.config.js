@@ -26,12 +26,12 @@ export default defineConfig({
 
         // FAIL build on unresolved imports
         if (warning.code === 'UNRESOLVED_IMPORT') {
-          throw new Error(Build failed due to unresolved import:\n${warning.message});
+          throw new Error(`Build failed due to unresolved import:\n${warning.message}`);
         }
 
         // FAIL build on missing exports (like your Input error)
         if (warning.code === 'PLUGIN_WARNING' && /is not exported/.test(warning.message)) {
-          throw new Error(Build failed due to missing export:\n${warning.message});
+          throw new Error(`Build failed due to missing export:\n${warning.message}`);
         }
 
         // other warnings: log normally
